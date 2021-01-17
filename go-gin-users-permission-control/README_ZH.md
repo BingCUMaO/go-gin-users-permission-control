@@ -26,10 +26,6 @@
 18. [Gin实践 番外 Golang交叉编译](https://book.eddycjy.com/golang/gin/cgo.html)
 19. [Gin实践 番外 请入门 Makefile](https://book.eddycjy.com/golang/gin/makefile.html)
 
-## 安装
-```
-$ go get github.com/EDDYCJY/go-gin-example
-```
 
 ## 如何运行
 
@@ -68,6 +64,9 @@ IdleTimeout = 200
 ### 运行
 ```
 $ cd $GOPATH/src/go-gin-example
+
+$ go mod tidy
+$ go mod vendor
 
 $ go run main.go 
 ```

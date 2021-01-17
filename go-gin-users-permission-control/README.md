@@ -4,10 +4,6 @@ An example of gin contains many useful features
 
 [简体中文](https://github.com/EDDYCJY/go-gin-example/blob/master/README_ZH.md)
 
-## Installation
-```
-$ go get github.com/EDDYCJY/go-gin-example
-```
 
 ## How to run
 
@@ -45,6 +41,9 @@ IdleTimeout = 200
 ### Run
 ```
 $ cd $GOPATH/src/go-gin-example
+
+$ go mod tidy
+$ go mod vendor
 
 $ go run main.go 
 ```
