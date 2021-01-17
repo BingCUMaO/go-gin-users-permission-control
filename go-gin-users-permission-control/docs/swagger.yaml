@@ -1,0 +1,335 @@
+definitions:
+  app.Response:
+    properties:
+      code:
+        type: integer
+      data:
+        type: object
+      msg:
+        type: string
+    type: object
+  v1.AddPermissionForm:
+    properties:
+      description:
+        type: string
+      permission_key:
+        type: string
+      remark:
+        type: string
+    type: object
+  v1.AddRoleForm:
+    properties:
+      description:
+        type: string
+      name:
+        type: string
+      remark:
+        type: string
+    type: object
+  v1.AddRolePermissionForm:
+    properties:
+      permission_id:
+        type: integer
+      role_id:
+        type: integer
+    type: object
+  v1.AddUserForm:
+    properties:
+      email:
+        type: string
+      password:
+        type: string
+      phone:
+        type: string
+      remark:
+        type: string
+      sex:
+        type: integer
+      username:
+        type: string
+    type: object
+  v1.AddUserRoleForm:
+    properties:
+      role_id:
+        type: integer
+      user_id:
+        type: integer
+    type: object
+  v1.DeletePermissionForm:
+    properties:
+      rolePermissionId:
+        type: integer
+    type: object
+  v1.ListPermissionForm:
+    properties:
+      page:
+        type: integer
+      size:
+        type: integer
+    type: object
+  v1.ListRoleForm:
+    properties:
+      page:
+        type: integer
+      size:
+        type: integer
+    type: object
+  v1.ListRolePermissionsForm:
+    properties:
+      role_id:
+        type: integer
+    type: object
+  v1.ListUserForm:
+    properties:
+      page:
+        type: integer
+      size:
+        type: integer
+    type: object
+  v1.ListUserRoleForm:
+    properties:
+      user_id:
+        type: integer
+    type: object
+info:
+  contact: {}
+  description: An example of gin for users permission control
+  license:
+    name: MIT
+    url: https://bingcu.top/go-gin-users-permission-control/blob/master/LICENSE
+  termsOfService: https://bingcu.top/go-gin-users-permission-control
+  title: User Permission Control Gin API
+  version: "1.0"
+paths:
+  /api/v1/permission/add:
+    post:
+      parameters:
+      - description: PermissionAdd
+        in: body
+        name: permission
+        required: true
+        schema:
+          $ref: '#/definitions/v1.AddPermissionForm'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/app.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/app.Response'
+      summary: Add permission
+  /api/v1/permission/list:
+    post:
+      parameters:
+      - description: PermissionQuery
+        in: body
+        name: queryCondition
+        required: true
+        schema:
+          $ref: '#/definitions/v1.ListPermissionForm'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/app.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/app.Response'
+      summary: List permissions
+  /api/v1/role/add:
+    post:
+      parameters:
+      - description: RoleAdd
+        in: body
+        name: role
+        required: true
+        schema:
+          $ref: '#/definitions/v1.AddRoleForm'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/app.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/app.Response'
+      summary: Add role
+  /api/v1/role/list:
+    post:
+      parameters:
+      - description: RolesQuery
+        in: body
+        name: queryCondition
+        required: true
+        schema:
+          $ref: '#/definitions/v1.ListRoleForm'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/app.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/app.Response'
+      summary: List roles
+  /api/v1/role/permission/add:
+    post:
+      parameters:
+      - description: RolePermissionAdd
+        in: body
+        name: rolePermission
+        required: true
+        schema:
+          $ref: '#/definitions/v1.AddRolePermissionForm'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/app.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/app.Response'
+      summary: Add rolePermission
+  /api/v1/role/permission/delete:
+    post:
+      parameters:
+      - description: RolePermissionDelete
+        in: body
+        name: rolePermission
+        required: true
+        schema:
+          $ref: '#/definitions/v1.DeletePermissionForm'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/app.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/app.Response'
+      summary: Delete rolePermission
+  /api/v1/role/permission/list:
+    post:
+      parameters:
+      - description: RolePermissionList
+        in: body
+        name: rolePermission
+        required: true
+        schema:
+          $ref: '#/definitions/v1.ListRolePermissionsForm'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/app.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/app.Response'
+      summary: List rolePermission
+  /api/v1/user/add:
+    post:
+      parameters:
+      - description: UserAdd
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/v1.AddUserForm'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/app.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/app.Response'
+      summary: Add user
+  /api/v1/user/list:
+    post:
+      parameters:
+      - description: UserQuery
+        in: body
+        name: queryCondition
+        required: true
+        schema:
+          $ref: '#/definitions/v1.ListUserForm'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/app.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/app.Response'
+      summary: List users
+  /api/v1/user/role/add:
+    post:
+      parameters:
+      - description: UserRoleAdd
+        in: body
+        name: userRole
+        required: true
+        schema:
+          $ref: '#/definitions/v1.AddUserRoleForm'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/app.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/app.Response'
+      summary: Add user's role
+  /api/v1/user/role/list:
+    post:
+      parameters:
+      - description: UserRolesQuery
+        in: body
+        name: queryCondition
+        required: true
+        schema:
+          $ref: '#/definitions/v1.ListUserRoleForm'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/app.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/app.Response'
+      summary: List user's roles
+swagger: "2.0"
